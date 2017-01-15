@@ -30,6 +30,7 @@ return [
         //         ],
         //     ],
         // ],
+
         
         'user' => [
             'identityClass' => 'common\models\User',
@@ -67,7 +68,14 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,  // Disable index.php
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['user', 'mhs','test', 'employe']],
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => ['user', 'usr', 'mhs','test', 'employe', 'employee'],
+                    'extraPatterns' => [
+                        'POST purchasedcard' => 'purchasedcard',
+                        'GET search' => 'search',
+                    ]                    
+                ],
             ],
         ]
 

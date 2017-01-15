@@ -7,14 +7,9 @@ use yii\data\ActiveDataProvider;
 use yii\db\Query;
 use yii\filters\auth\HttpBasicAuth;
 
-class UserController extends ActiveController
+class UsrController extends ActiveController
 {
-    public $modelClass = 'common\models\User';
-
-    public $serializer = [
-        'class' => 'yii\rest\Serializer',
-        'collectionEnvelope' => 'items',
-    ];
+    public $modelClass = 'backend\models\Usr';
 
     // public function behaviors()
     // {
@@ -52,18 +47,18 @@ class UserController extends ActiveController
     }
 
 
-    public function actions(){
-        $actions = parent::actions();
+    // public function actions(){
+    //     $actions = parent::actions();
 
-        // disable the "delete" and "create" actions
-        unset($actions['delete'], $actions['create']);
+    //     // disable the "delete" and "create" actions
+    //     unset($actions['delete'], $actions['create']);
 
-        // customize the data provider preparation with the "prepareDataProvider()" method
-        $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+    //     // customize the data provider preparation with the "prepareDataProvider()" method
+    //     $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
 
-        return $actions;
+    //     return $actions;
 
-    }
+    // }
 
 
     // public function actionIndex(){
@@ -77,13 +72,13 @@ class UserController extends ActiveController
     // }
 
 
-    public function prepareDataProvider()
-    {
-        return new ActiveDataProvider([
-            'query' => \common\models\User::find()->select(['id', 'username', 'email']),
-            'pagination' => ['defaultPageSize' => 3],
-        ]);
-    }
+    // public function prepareDataProvider()
+    // {
+    //     return new ActiveDataProvider([
+    //         'query' => \common\models\User::find(),
+    //         'pagination' => ['defaultPageSize' => 3],
+    //     ]);
+    // }
 
     
 }
