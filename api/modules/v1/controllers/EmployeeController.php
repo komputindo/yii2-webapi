@@ -2,9 +2,11 @@
 
 namespace api\modules\v1\controllers;
 
-use Yii;
+// use Yii;
+// use yii\db\Query;
 
-use yii\db\Query;
+use yii\data\ActiveDataProvider;
+use backend\models\Employee;
 
 /*
 Implementasi Rest With Query Buider
@@ -73,51 +75,13 @@ class EmployeeController extends \yii\rest\Controller
         return ['data'=>$msg];
     }
 
-    public function actionIndex(){
-        // $model = \backend\models\employee::findAll();
+    
+  public function actionIndex(){
 
-          $params=$_REQUEST;
-          $filter=array();
-          $sort="";
-         
-          $page=2;
-          $limit=3;
+        return new ActiveDataProvider([
+            'query' => Employee::find(),
+        ]);
 
-
-          if(isset($params['page']))
-             $page=$params['page'];
-              
-               
-           if(isset($params['limit']))
-              $limit=$params['limit'];
-               
-            $offset=$limit*($page-1);
-
-
-               $query=new Query;
-               $query->offset($offset)
-                 ->limit($limit)
-                 ->from('employee')
-                 // ->andFilterWhere(['like', 'id', $filter['id']])32
-
-                 // ->andFilterWhere(['like', 'name', $filter['name']])
-                 // ->andFilterWhere(['like', 'age', $filter['age']])
-                 ->orderBy($sort)
-                 ->select("name, email, birthday");
-                 
-
-           $command = $query->createCommand();
-               $models = $command->queryAll();
-                $totalItems=$query->count();
-
-
-
-        // $model=[2,3,4];
-
-
-        // return ['count'=> $totalItems ,'data'=>$models];
-
-                return [1=>'A',2=>'B',3=>'C',4=>'D'];
-    } 
+  }
 
 }
