@@ -25,7 +25,7 @@ class EmployeController extends ActiveController
     {
        return [
            'insert' => ['POST'],
-           'datas' => ['GET'],
+           'data' => ['GET'],
        ];
     }
 
@@ -60,7 +60,7 @@ class EmployeController extends ActiveController
 
         // customize the data provider preparation with the "prepareDataProvider()" method
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
-        $actions['datas']['prepareDataProvider'] = [$this, 'prepareDataProviders'];
+        // $actions['data']['data'] = [$this, 'data'];
 
         return $actions;
     }
@@ -99,13 +99,24 @@ class EmployeController extends ActiveController
          
     }
 
+    // http://localhost/yii2-webapi/api/web/index.php/v1/employes/search
     public function actionSearch()
     {
 
-        $searchModel= new EmployeeSearch();
-        return $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel= new EmployeeSearch();
+        // return $searchModel->search(Yii::$app->request->queryParams);
+
+        return \backend\models\ListCountry::find()->all();
+
 
     }
+
+    // public function actionData()
+    // {
+    //     // return [1,2,3,4];
+    //             $searchModel= new EmployeeSearch();
+    //     return $searchModel->search(Yii::$app->request->queryParams);
+    // }
 
 
 

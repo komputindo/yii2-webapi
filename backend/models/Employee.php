@@ -12,6 +12,7 @@ use Yii;
  * @property string $email
  * @property string $birthday
  * @property string $photo
+ * @property integer $country_id
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -33,7 +34,7 @@ class Employee extends \yii\db\ActiveRecord
         return [
             // [['name', 'email'], 'required'],
             [['birthday'], 'safe'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at', 'country_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 100],
             [['photo'], 'string', 'max' => 255],
