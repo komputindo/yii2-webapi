@@ -106,7 +106,7 @@ class EmployeController extends ActiveController
         // $searchModel= new EmployeeSearch();
         // return $searchModel->search(Yii::$app->request->queryParams);
 
-        return \backend\models\ListCountry::find()->all();
+        return \backend\models\Country::find()->select(['id', 'name'])->all();
 
 
     }
